@@ -85,7 +85,7 @@ class VAE(FeatureExtractor):
             sh = tf.shape(x)
             x = flatten_two_dims(x)
         with tf.variable_scope(self.scope + "_features", reuse=reuse):
-            x = (tf.to_float(x) - self.ob_mean) / self.ob_std
+            x = tf.to_float(x)
             x = small_convnet(x, nl=nl, feat_dim=2 * self.feat_dim, last_nl=None, layernormalize=False)
         if x_has_timesteps:
             x = unflatten_first_dim(x, sh)
@@ -117,7 +117,6 @@ class VAE(FeatureExtractor):
 
     def add_noise_and_normalize(self, x):
         x = tf.to_float(x) + tf.random_uniform(shape=tf.shape(x), minval=0., maxval=1.)
-        x = (x - self.ob_mean) / self.ob_std
         return x
 
     def decoder(self, z):
@@ -154,7 +153,7 @@ class JustPixels(FeatureExtractor):
 
     def get_features(self, x, reuse):
         with tf.variable_scope(self.scope + "_features", reuse=reuse):
-            x = (tf.to_float(x) - self.ob_mean) / self.ob_std
+            x = tf.to_float(x)
         return x
 
     def get_loss(self):

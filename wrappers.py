@@ -358,7 +358,7 @@ def make_coinrun():
     from coinrun_wrapper import CourierWrapper, MyReward
     setup_utils.setup_and_load(use_cmd_line_args=False, set_seed=3, num_levels=1, use_black_white=True, frame_stack=4)
     # env=make("platform",num_envs=8)
-    env = make("platform", num_envs=16)
+    env = make("platform", num_envs=256)
     env = CourierWrapper(env, False)
     env = MyReward(env)
     return env

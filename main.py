@@ -187,7 +187,7 @@ def add_optimization_params(parser):
 def add_rollout_params(parser):
     parser.add_argument('--nsteps_per_seg', type=int, default=256)
     parser.add_argument('--nsegs_per_env', type=int, default=1)
-    parser.add_argument('--envs_per_process', type=int, default=16)
+    parser.add_argument('--envs_per_process', type=int, default=256)
     parser.add_argument('--nlumps', type=int, default=1)
 
 

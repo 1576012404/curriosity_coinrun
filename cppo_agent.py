@@ -88,7 +88,7 @@ class PpoOptimizer(object):
 
         self.all_visited_rooms = []
         self.all_scores = []
-        self.nenvs = nenvs=16
+        self.nenvs = nenvs=256
         self.nlump = 1
         self.lump_stride = nenvs // self.nlump
         self.envs = [env_fns
